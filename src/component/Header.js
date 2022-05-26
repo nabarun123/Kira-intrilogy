@@ -2,6 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Header() {
+  let data = JSON.parse(localStorage.getItem("contact"));
+  // console.log(data);
+
+  let date = new Date().getHours();
+  // console.log(date);
+  let dateMsg = "";
+
+  if (date <= 12 && date >= 6) {
+    dateMsg = "Good Morning!";
+  } else if (date > 12 && date <= 17) {
+    dateMsg = "Good Afternoon!";
+  } else {
+    dateMsg = "Good Evening!";
+  }
+
+  let name = !data ? "No data found" : data.name1;
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -46,7 +62,7 @@ function Header() {
             </Link>
             <li className="nav-item">
               <div className="text-light py-2 ps-5" href="#">
-                Hello User, Good Evening!
+                Hello {name}, {dateMsg}
               </div>
             </li>
           </ul>

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
 function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  let data = JSON.parse(localStorage.getItem("contact"));
+  console.log(data);
+
+  let name = !data ? "No data found" : data.name1;
+  let email = !data ? "No data found" : data.email1;
 
   function getData(e) {
     e.preventDefault();
@@ -24,8 +28,8 @@ function Contact() {
           Share your thoughts
         </h4>
         <form>
-          <div className="input-group">
-            <input
+          {/* <div className="input-group"> */}
+          {/* <input
               type="text"
               className="form-control m-1"
               placeholder="Full Name"
@@ -38,8 +42,8 @@ function Contact() {
               className="form-control m-1"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+            /> */}
+          {/* </div> */}
           <div className="input-group">
             <input
               type="text"

@@ -5,6 +5,17 @@ import "../pages/Login";
 
 function Login() {
   const [showSignup, setShowSignup] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const submitFn = () => {
+    let obj = { name1: "", email1: "" };
+    obj.name1 = name;
+    obj.email1 = email;
+    localStorage.setItem("contact", JSON.stringify(obj));
+    setName("");
+    setEmail("");
+  };
 
   const toggleSignup = () => {
     setShowSignup(!showSignup);
@@ -32,6 +43,7 @@ function Login() {
                     type="text"
                     className="form-control m-1"
                     placeholder="Username"
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="input-group">
@@ -46,6 +58,7 @@ function Login() {
                         type="submit"
                         className="btn btn-primary form-control m-1 "
                         value="Login as a User"
+                        onClick={submitFn}
                       />
                     </Link>
                   </div>
@@ -66,6 +79,7 @@ function Login() {
                     type="text"
                     className="form-control m-1"
                     placeholder="Full Name"
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
 
@@ -82,6 +96,7 @@ function Login() {
                     type="text"
                     className="form-control m-1"
                     placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
 
@@ -105,6 +120,7 @@ function Login() {
                         type="submit"
                         className="btn btn-primary form-control m-1 "
                         value="Register as a User"
+                        onClick={submitFn}
                       />
                     </Link>
                   </div>
